@@ -7,7 +7,7 @@ import com.riwi.eventLog.entities.Event;
 
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, Long> {
+public interface EventRepository extends JpaRepository<Event, String> {
   //creo el método
   public Event findByName(String name);
 }
