@@ -30,20 +30,21 @@ public class EventService implements IEventService {
 
   @Override
   public Event findById(String id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    return this.eventRepository.findById(id).orElseThrow();
   }
 
   @Override
   public void delete(String id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    Event eventFind = this.eventRepository.findById(id).orElseThrow();
+    this.eventRepository.delete(eventFind);
   }
 
   @Override
-  public Event update(String id, Event Event) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+  public Event update(String id, Event event) {
+    this.eventRepository.findById(id).orElseThrow();
+
+    event.setId(id);
+    return this.eventRepository.save(event);
   }
 
   @Override
@@ -51,5 +52,6 @@ public class EventService implements IEventService {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'search'");
   }
+
 
 }

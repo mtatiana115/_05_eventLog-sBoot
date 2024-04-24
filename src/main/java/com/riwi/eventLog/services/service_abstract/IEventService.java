@@ -14,7 +14,7 @@ public interface IEventService {
 
   public void delete(String id);
 
-  public Event update(String id, Event Event);
+  public Event update(String id, Event event);
 
   public List<Event> search(String name);
 }
