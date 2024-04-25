@@ -2,6 +2,8 @@ package com.riwi.eventLog.services.service_abstract;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.riwi.eventLog.entities.Event;
 
 public interface IEventService {
@@ -17,4 +19,6 @@ public interface IEventService {
   public Event update(String id, Event event);
 
   public List<Event> search(String name);
+
+  public Page<Event> getAllByPages (int page, int size);
 }

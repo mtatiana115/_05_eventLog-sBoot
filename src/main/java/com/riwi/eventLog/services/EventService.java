@@ -3,6 +3,9 @@ package com.riwi.eventLog.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.riwi.eventLog.entities.Event;
@@ -49,8 +52,19 @@ public class EventService implements IEventService {
 
   @Override
   public List<Event> search(String name) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'search'");
+    return this.eventRepository.findByName(name);
+  }
+
+  @Override
+  public Page<Event> getAllByPages(int page, int size) {
+    
+    if (page<0) {
+      page = 0;
+    }
+
+    Pageable pageable = PageRequest.of(page, size);
+
+    return eventRepository.findAll(pageable);
   }
 
 
